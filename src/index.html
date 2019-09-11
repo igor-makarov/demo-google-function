@@ -20,11 +20,16 @@
       deploying a copy to Netlify</a>.
     </p>
     <article>
-      <h2>Hello, World!</h2>
-      <p>The inevitable Hello World example.</p>
+      <h2>Google</h2>
       <pre class="language-js"><code><%= require('html-loader!./lambda/google.js') %></code></pre>
       <h3>Try it out</h3>
-      <p><a href="/.netlify/functions/google">Say hello!</a></p>
+      <form action="/.netlify/functions/google" method="GET">
+        <p>
+          <label>Google query:<br/><input type="text" name="query" value="stratechery"></label>
+        </p>
+        <p><button type="submit">Say hello!</button></p>
+      </form>
+      <p><a href="/.netlify/functions/google">Show me the error</a></p>
     </article>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.14.0/prism.min.js"></script>
     <script src="main.js"></script>
