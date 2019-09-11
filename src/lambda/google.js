@@ -1,12 +1,18 @@
 const googleIt = require('google-it')
 
+const allowed = ["stratechery", "marco arment", "daring fireball"]
+
 exports.handler = async (event, context) => {
-  // Only allow POST
-  if (!event.queryStringParameters.query) {
+  const query = event.queryStringParameters.query
+  if (!query) {
     return { statusCode: 405, body: "Empty not allowed" };
   }
 
-  const results = await googleIt({'query': event.queryStringParameters.query})
+  if (!allowed.includes(query)) {
+    return { statusCode: 405, body: `Allowed queries: ${allowed}` };
+  }
+
+  const results = await googleIt({'query': query})
   const resultsArray = results.map(link => link['link'])
 
   return {
